@@ -7,6 +7,8 @@ import sys
 import re
 import zipfile
 
+import chardet
+
 """
 Constant literal defining specs. Decided to code it here instead of including it in a JSON as this allows the whole
 script to be self contained and allows a student to simply drag and drop a zip file into the script for execution.
@@ -42,7 +44,7 @@ EXPECTED = [
     "E3-Qc2.txt",
     "E4-Qa1.jff",
     "E4-Qb1.jff",
-    "E5-Qb.txt"
+    "E5-Qa1.txt"
 ]
 
 def print_usage():
@@ -123,11 +125,11 @@ def main():
     zip_path = sys.argv[1]
 
     if validate(zip_path):
-        print("All tests successful, your zip file is correctly formatted.")
+        print("\n ALL TESTS SUCCESSFUL, your zip file is correctly formatted.")
         print()
         sys.exit(0)
     else:
-        print("One or more tests failed. Please check the results above for details.")
+        print("\n ONE OR MORE TESTS FAILED. Please check the results above for details.")
         print()
         sys.exit(2)
 
