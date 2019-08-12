@@ -118,10 +118,11 @@ def validate(zip_path):
     return validate_zip_name(zip_path) and validate_files(zip_path)
 
 def main():
-    description = 'Validate file content in zip submission file for COSC1107/1105 Assignment 1.\n ' \
-                    'Will check the following: \n' \
-                    '   - ssss '
-    parser = argparse.ArgumentParser(description=description)
+    parser = argparse.ArgumentParser(
+        description= 'Validate file content in zip submission file for COSC1107/1105 Assignment 1. \n'
+                     'Will check if it is a zip file and if the name of the files inside are correct.'
+                     'Note it does NOT check the encoding of the files or their types (text or JFLAP).'
+    )
     parser.add_argument('domain-problem',
                         help='.zip file containing the submission')
 
