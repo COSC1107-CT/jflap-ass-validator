@@ -7,10 +7,7 @@ import os
 import sys
 import re
 import zipfile
-
 import argparse
-
-import chardet
 
 """
 Constant literal defining specs. Decided to code it here instead of including it in a JSON as this allows the whole
