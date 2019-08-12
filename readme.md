@@ -2,7 +2,7 @@
 
 ## Background
 
-During previous years, many students submitted incorrectly formatted zip files for their first assignment resulting in no marks or penalties. 
+During previous years, many students submitted incorrectly formatted zip files for their first [JFLAP-based](http://www.jflap.org/) assignment resulting in no marks or penalties. 
 
 As a way to mitigate this problem, this script intents to perform some checks for the formatting of the zip files prior to submission to ensure the following:
 
