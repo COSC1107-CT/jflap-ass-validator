@@ -1,23 +1,48 @@
 # RMIT CSIT CT Assignment Format Checker
 
 ## Background
-During previous years, many students submitted incorrectly formatted zip documents for 
-their first assignment resulting in as 0 grade. As a way to mitigate this problem, this
-script intents to check the formatting of the zip files prior to submission to ensure the following:
-1. The zip file is named corrected (7 digit number followed by .zip)
-2. The zip file contains all of the expected files including bonus questions files. 
-3. The zip file does not contain unexpected files and folders. 
-   Including accidentally nesting the submission files too deeply.
+
+During previous years, many students submitted incorrectly formatted zip files for their first assignment resulting in no marks or penalties. 
+
+As a way to mitigate this problem, this script intents to perform some checks for the formatting of the zip files prior to submission to ensure the following:
+
+1. The zip file exists and is indeed a zip compressed file.
+2. The zip file is named corrected (7 digit number followed by .zip)
+3. The zip file contains all of the expected files including bonus questions files. 
+4. The zip file does not contain unexpected files and folders, including accidentally nesting the submission files too deeply.
 
 ## Prerequisites
-1. Python Version 2 or 3.
+
+1. Python Version 2 or 3, with standard packages: `os`, `sys`, `re`, `zipfile`, and `argparse`.
 2. Windows, linux or MacOS environment.
 
+
 ## Running the script
+
 This script is intended for students to download and run locally. 
+
 ```
-$python validator.py <fullpath_to_zipfile>.zip
+$ python validator.py <fullpath_to_zipfile>.zip
 ```
+
+For help, use `-h` option:
+
+```
+[ssardina@Thinkpad-X1 jflap-ass-validator.git]$ python validator.py -h
+usage: validator.py [-h] domain-problem
+
+Validate file content in zip submission file for COSC1107/1105 Assignment 1.
+Will check if it is a zip file and if the name of the files inside are
+correct.Note it does NOT check the encoding of the files or their types (text
+or JFLAP).
+
+positional arguments:
+  domain-problem  .zip file containing the submission
+
+optional arguments:
+  -h, --help      show this help message and exit
+```
+
 
 ### Example of running against a correct file:
 ```
