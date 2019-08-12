@@ -11,6 +11,8 @@ As a way to mitigate this problem, this script intents to perform some checks fo
 3. The zip file contains all of the expected files including bonus questions files. 
 4. The zip file does not contain unexpected files and folders, including accidentally nesting the submission files too deeply.
 
+This validator _only checks at the file names_ and locations in the zip file, but _does no check on the validity of each file beyond their names_. For example, it does not check file encodings (use `file` for that) or that the content in each file  (e.g., whether it is JFLAP XML data or text data).
+
 ## Prerequisites
 
 1. Python Version 2 or 3, with standard packages: `os`, `sys`, `re`, `zipfile`, and `argparse`.
