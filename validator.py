@@ -3,9 +3,12 @@ from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
 
+import os
 import sys
 import re
 import zipfile
+
+import argparse
 
 import chardet
 
@@ -47,9 +50,6 @@ EXPECTED = [
     "E5-Qa1.txt"
 ]
 
-def print_usage():
-    print("Usage: python validate.py <path to zip file>.zip")
-    sys.exit(1)
 
 def ok(output):
     print("OK: " + output)
@@ -118,11 +118,22 @@ def validate(zip_path):
     return validate_zip_name(zip_path) and validate_files(zip_path)
 
 def main():
+    description = 'Validate file content in zip submission file for COSC1107/1105 Assignment 1.\n ' \
+                    'Will check the following: \n' \
+                    '   - ssss '
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('domain-problem',
+                        help='.zip file containing the submission')
 
-    if not len(sys.argv) == 2:
-        print_usage()
+    zip_path = vars(parser.parse_args())['domain-problem']
 
-    zip_path = sys.argv[1]
+    if not os.path.isfile(zip_path):
+        print("\n FILE '{}' NOT FOUND. The file does not seem to exist. Please double check.".format(zip_path))
+        sys.exit(2)
+
+    if not zipfile.is_zipfile(zip_path):
+        print("\n FILE '{}' IS NOT A ZIP FILE. Seems it is not a legal zip file, please check.".format(zip_path))
+        sys.exit(2)
 
     if validate(zip_path):
         print("\n ALL TESTS SUCCESSFUL, your zip file is correctly formatted.")
@@ -132,6 +143,11 @@ def main():
         print("\n ONE OR MORE TESTS FAILED. Please check the results above for details.")
         print()
         sys.exit(2)
+
+
+def print_usage():
+    print("Usage: python validate.py <path to zip file>.zip")
+    sys.exit(1)
 
 if __name__ == "__main__":
     main()
